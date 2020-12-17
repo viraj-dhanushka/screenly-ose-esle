@@ -138,10 +138,10 @@ fi
 if [ -z "${REPOSITORY}" ]; then
   if [ "$WEB_UPGRADE" = false ]; then
     set -x
-    REPOSITORY=${1:-https://github.com/screenly/screenly-ose.git}
+    REPOSITORY=${1:-https://github.com/viradhanus/screenly-ose.git}
   else
     set -e
-    REPOSITORY=https://github.com/screenly/screenly-ose.git
+    REPOSITORY=https://github.com/viradhanus/screenly-ose.git
   fi
 fi
 
@@ -169,7 +169,7 @@ fi
 
 sudo pip install ansible==2.8.8
 
-sudo -u pi ansible localhost -m git -a "repo=$REPOSITORY dest=/home/pi/screenly version=$BRANCH force=no"
+sudo -u pi ansible localhost -m git -a "repo=$REPOSITORY dest=/home/pi/screenly version=$BRANCH force=yes"
 cd /home/pi/screenly/ansible
 
 sudo -E ansible-playbook site.yml $EXTRA_ARGS
